@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GRAND MED SERVICE — Частная клиника</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#0B4F6C;
+  --primary-light:#1A7A9A;
+  --accent:#2EC4B6;
+  --accent-soft:#E8F8F7;
+  --gold:#C9A84C;
+  --text-dark:#0D1B2A;
+  --text-mid:#3A5068;
+  --text-soft:#7A9BB5;
+  --bg:#F5F9FC;
+  --white:#FFFFFF;
+  --border:rgba(11,79,108,0.12)
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-dark)}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(11,79,108,0.06)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:38px;height:38px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.logo-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2}
+.logo-text{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--primary);line-height:1.2}
+.logo-sub{font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:500;text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text-mid);transition:color 0.2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-btn{background:var(--primary);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s}
+.nav-btn:hover{background:var(--primary-light)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--primary) 0%,#0D6B8A 60%,#0F7F9E 100%);padding:5rem 2rem 4rem;display:flex;align-items:center;gap:3rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.05)}
+.hero::after{content:'';position:absolute;right:60px;bottom:-60px;width:250px;height:250px;border-radius:50%;background:rgba(46,196,182,0.12)}
+.hero-content{flex:1;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:#E8C96A;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.2rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;font-weight:700;line-height:1.15;margin-bottom:1rem}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;max-width:420px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:var(--text-dark);border:none;padding:13px 26px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
+.btn-primary:hover{background:#25b0a3}
+.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.4);padding:13px 26px;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.08)}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.15)}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px}
+.hero-card-wrap{flex:0 0 300px;z-index:1}
+.hero-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:1.5rem}
+.hero-card-title{color:rgba(255,255,255,0.9);font-size:14px;font-weight:500;margin-bottom:1rem}
+.doctor-list{display:flex;flex-direction:column;gap:10px}
+.doctor-item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 12px}
+.doc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.doc-name{font-size:13px;font-weight:500;color:#fff}
+.doc-spec{font-size:11px;color:rgba(255,255,255,0.6)}
+.doc-dot{margin-left:auto;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+/* SECTION */
+.section{padding:4rem 2rem}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-tag{font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.section h2{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--primary);font-weight:700}
+.section-sub{font-size:15px;color:var(--text-soft);margin-top:.5rem}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem}
+.service-card{background:#fff;border-radius:16px;padding:1.5rem 1.2rem;border:1px solid var(--border);cursor:pointer;transition:all 0.25s;text-align:center}
+.service-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 32px rgba(11,79,108,0.1)}
+.service-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:26px}
+.service-card h3{font-size:14px;font-weight:600;color:var(--primary);margin-bottom:6px}
+.service-card p{font-size:12px;color:var(--text-soft);line-height:1.6}
+
+/* DOCTORS */
+.doctors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.doctor-card{background:#fff;border-radius:18px;border:1px solid var(--border);overflow:hidden;transition:all 0.25s}
+.doctor-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(11,79,108,0.1)}
+.doc-header{padding:1.5rem 1.2rem 1rem;text-align:center}
+.doc-avatar-lg{width:72px;height:72px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:#fff}
+.doc-card-name{font-size:15px;font-weight:600;color:var(--primary);margin-bottom:3px}
+.doc-card-spec{font-size:12px;color:var(--accent);font-weight:500}
+.doc-card-exp{font-size:12px;color:var(--text-soft);margin-top:4px}
+.doc-footer{padding:12px 1.2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.doc-rating{font-size:13px;color:var(--gold);font-weight:600}
+.doc-btn{font-size:12px;color:var(--primary);background:var(--accent-soft);border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;transition:background 0.2s}
+.doc-btn:hover{background:#c8efec}
+
+/* APPOINTMENT */
+.appt-section{background:#fff;margin:0 2rem 4rem;border-radius:20px;border:1px solid var(--border);padding:3rem;display:flex;gap:3rem;align-items:flex-start}
+.appt-left{flex:1}
+.appt-left h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--primary);margin-bottom:.8rem}
+.appt-left p{color:var(--text-soft);font-size:14px;line-height:1.7;margin-bottom:1.5rem}
+.contact-items{display:flex;flex-direction:column;gap:10px}
+.contact-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid)}
+.contact-item i{font-size:18px;color:var(--accent)}
+.appt-form{flex:1}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-group label{font-size:12px;font-weight:500;color:var(--text-mid)}
+.form-group input,.form-group select{padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text-dark);background:var(--bg);outline:none;transition:border 0.2s}
+.form-group input:focus,.form-group select:focus{border-color:var(--accent);background:#fff}
+.form-submit{width:100%;background:var(--primary);color:#fff;border:none;padding:13px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;margin-top:4px}
+.form-submit:hover{background:var(--primary-light)}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.why-card{background:#fff;border-radius:16px;padding:1.8rem 1.5rem;border:1px solid var(--border);text-align:center}
+.why-icon{width:60px;height:60px;background:var(--accent-soft);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:26px;color:var(--accent)}
+.why-card h3{font-size:15px;font-weight:600;color:var(--primary);margin-bottom:8px}
+.why-card p{font-size:13px;color:var(--text-soft);line-height:1.6}
+
+/* FOOTER */
+footer{background:var(--primary);color:rgba(255,255,255,0.8);padding:3rem 2rem 1.5rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff}
+.footer-brand-sub{font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:500;text-transform:uppercase}
+.footer-brand p{font-size:13px;margin-top:.8rem;color:rgba(255,255,255,0.6);line-height:1.7}
+.footer-col h4{font-size:13px;font-weight:600;color:#fff;margin-bottom:1rem;letter-spacing:.5px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.footer-col ul li{font-size:13px;color:rgba(255,255,255,0.6)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.2rem;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.4)}
+
+/* SCROLL ANIMATION */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:768px){
+  .hero{flex-direction:column;padding:3rem 1rem}
+  .hero h1{font-size:2rem}
+  .hero-card-wrap{display:none}
+  .hero-stats{gap:1rem;flex-wrap:wrap}
+  .nav-links{display:none}
+  .appt-section{flex-direction:column;margin:0 1rem 2rem;padding:1.5rem}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L12 22M2 12L22 12" stroke-linecap="round"/><rect x="7" y="7" width="10" height="10" rx="2" stroke-width="1.5"/></svg>
+    </div>
+    <div>
+      <div class="logo-text">GRAND MED SERVICE</div>
+      <div class="logo-sub">Частная клиника · ООО</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#doctors">Врачи</a></li>
+    <li><a href="#why">О нас</a></li>
+    <li><a href="#appointment">Контакты</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться на приём</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">⭐ Ташкент — надёжная клиника</div>
+    <h1>Ваше здоровье —<br>наш главный <span>приоритет</span></h1>
+    <p>GRAND MED SERVICE — современное оборудование и опытные специалисты для вашего здоровья и здоровья вашей семьи.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться на приём</button>
+      <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Наши услуги →</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">15+</div><div class="stat-label">Лет опыта</div></div>
+      <div><div class="stat-num">8000+</div><div class="stat-label">Пациентов</div></div>
+      <div><div class="stat-num">25+</div><div class="stat-label">Специалистов</div></div>
+      <div><div class="stat-num">24/7</div><div class="stat-label">Помощь</div></div>
+    </div>
+  </div>
+  <div class="hero-card-wrap">
+    <div class="hero-card">
+      <div class="hero-card-title">Онлайн-запись · Сегодня</div>
+      <div class="doctor-list">
+        <div class="doctor-item">
+          <div class="doc-av" style="background:#2EC4B6">АК</div>
+          <div><div class="doc-name">Азиз Каримов</div><div class="doc-spec">Кардиолог</div></div>
+          <div class="doc-dot"></div>
+        </div>
+        <div class="doctor-item">
+          <div class="doc-av" style="background:#C9A84C">МЮ</div>
+          <div><div class="doc-name">Малика Юсупова</div><div class="doc-spec">Невропатолог</div></div>
+          <div class="doc-dot"></div>
+        </div>
+        <div class="doctor-item">
+          <div class="doc-av" style="background:#0B4F6C">ША</div>
+          <div><div class="doc-name">Шерзод Алиев</div><div class="doc-spec">Терапевт</div></div>
+          <div class="doc-dot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section fade-in" id="services">
+  <div class="section-header">
+    <div class="section-tag">Услуги / Xizmatlar</div>
+    <h2>Медицинские услуги</h2>
+    <div class="section-sub">Современная диагностика и лечение</div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon" style="background:#E8F8F7"><i class="ti ti-heart-rate-monitor" style="color:#2EC4B6"></i></div>
+      <h3>Кардиология</h3>
+      <p>Диагностика и лечение заболеваний сердечно-сосудистой системы</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:#EEF4FF"><i class="ti ti-brain" style="color:#534AB7"></i></div>
+      <h3>Неврология</h3>
+      <p>Лечение заболеваний нервной системы</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:#FFF8E8"><i class="ti ti-microscope" style="color:#C9A84C"></i></div>
+      <h3>Лаборатория</h3>
+      <p>Современные анализы и обследования</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:#FFF0F0"><i class="ti ti-stethoscope" style="color:#D85A30"></i></div>
+      <h3>Терапия</h3>
+      <p>Общее лечение и профилактика заболеваний</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:#F0FFF4"><i class="ti ti-eye" style="color:#3B6D11"></i></div>
+      <h3>Офтальмология</h3>
+      <p>Диагностика и лечение заболеваний глаз</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:#FFF5EC"><i class="ti ti-scan" style="color:#854F0B"></i></div>
+      <h3>УЗИ / Диагностика</h3>
+      <p>Ультразвуковые и МРТ обследования</p>
+    </div>
+  </div>
+</div>
+
+<!-- DOCTORS -->
+<div class="section fade-in" id="doctors" style="background:#fff;padding:3rem 2rem">
+  <div class="section-header">
+    <div class="section-tag">Специалисты / Mutaxassislar</div>
+    <h2>Наши врачи</h2>
+    <div class="section-sub">Команда опытных и квалифицированных специалистов</div>
+  </div>
+  <div class="doctors-grid">
+    <div class="doctor-card">
+      <div class="doc-header">
+        <div class="doc-avatar-lg" style="background:#0B4F6C">АК</div>
+        <div class="doc-card-name">Азиз Каримов</div>
+        <div class="doc-card-spec">Кардиолог</div>
+        <div class="doc-card-exp">12 лет опыта</div>
+      </div>
+      <div class="doc-footer">
+        <div class="doc-rating">★ 4.9</div>
+        <button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button>
+      </div>
+    </div>
+    <div class="doctor-card">
+      <div class="doc-header">
+        <div class="doc-avatar-lg" style="background:#2EC4B6">МЮ</div>
+        <div class="doc-card-name">Малика Юсупова</div>
+        <div class="doc-card-spec">Невропатолог</div>
+        <div class="doc-card-exp">9 лет опыта</div>
+      </div>
+      <div class="doc-footer">
+        <div class="doc-rating">★ 4.8</div>
+        <button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button>
+      </div>
+    </div>
+    <div class="doctor-card">
+      <div class="doc-header">
+        <div class="doc-avatar-lg" style="background:#C9A84C">ША</div>
+        <div class="doc-card-name">Шерзод Алиев</div>
+        <div class="doc-card-spec">Терапевт</div>
+        <div class="doc-card-exp">7 лет опыта</div>
+      </div>
+      <div class="doc-footer">
+        <div class="doc-rating">★ 4.9</div>
+        <button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button>
+      </div>
+    </div>
+    <div class="doctor-card">
+      <div class="doc-header">
+        <div class="doc-avatar-lg" style="background:#993C1D">НХ</div>
+        <div class="doc-card-name">Нилуфар Хасанова</div>
+        <div class="doc-card-spec">Офтальмолог</div>
+        <div class="doc-card-exp">11 лет опыта</div>
+      </div>
+      <div class="doc-footer">
+        <div class="doc-rating">★ 4.7</div>
+        <button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="section fade-in" id="why">
+  <div class="section-header">
+    <div class="section-tag">Почему мы</div>
+    <h2>Наши преимущества</h2>
+    <div class="section-sub">Мы заботимся о каждом пациенте</div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon"><i class="ti ti-certificate"></i></div>
+      <h3>Лицензированные врачи</h3>
+      <p>Все наши специалисты имеют действующие лицензии и регулярно повышают квалификацию</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="ti ti-device-heart-monitor"></i></div>
+      <h3>Современное оборудование</h3>
+      <p>Клиника оснащена новейшим медицинским оборудованием европейского производства</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="ti ti-clock-24"></i></div>
+      <h3>Работаем 24/7</h3>
+      <p>Экстренная медицинская помощь доступна круглосуточно без выходных дней</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="ti ti-shield-check"></i></div>
+      <h3>Гарантия качества</h3>
+      <p>Мы гарантируем высокое качество медицинских услуг и заботливое отношение к пациентам</p>
+    </div>
+  </div>
+</div>
+
+<!-- APPOINTMENT -->
+<div class="appt-section fade-in" id="appointment">
+  <div class="appt-left">
+    <h2>Записаться на приём</h2>
+    <p>Выберите удобное время, и наш специалист свяжется с вами в ближайшее время.</p>
+    <div class="contact-items">
+      <div class="contact-item"><i class="ti ti-phone"></i> +998 (71) 000-00-00</div>
+      <div class="contact-item"><i class="ti ti-brand-telegram"></i> @grandmedservice</div>
+      <div class="contact-item"><i class="ti ti-mail"></i> info@grandmedservice.uz</div>
+      <div class="contact-item"><i class="ti ti-map-pin"></i> г. Ташкент, Узбекистан</div>
+      <div class="contact-item"><i class="ti ti-clock"></i> Пн–Сб: 08:00–20:00 | Вс: 09:00–16:00</div>
+    </div>
+  </div>
+  <div class="appt-form">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Имя и фамилия</label>
+        <input type="text" placeholder="Введите ваше имя" />
+      </div>
+      <div class="form-group">
+        <label>Номер телефона</label>
+        <input type="tel" placeholder="+998 __ ___ __ __" />
+      </div>
+      <div class="form-group">
+        <label>Специализация</label>
+        <select>
+          <option>Выберите...</option>
+          <option>Кардиолог</option>
+          <option>Невропатолог</option>
+          <option>Терапевт</option>
+          <option>Офтальмолог</option>
+          <option>Лаборатория</option>
+          <option>УЗИ / Диагностика</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Дата приёма</label>
+        <input type="date" />
+      </div>
+    </div>
+    <button class="form-submit" onclick="alert('Ваша заявка принята! Мы свяжемся с вами в ближайшее время.')">Записаться на приём →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">GRAND MED SERVICE</div>
+      <div class="footer-brand-sub">Частная клиника · ООО</div>
+      <p>Надёжная медицинская помощь для вас и вашей семьи в Ташкенте.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Услуги</h4>
+      <ul>
+        <li>Кардиология</li>
+        <li>Неврология</li>
+        <li>Терапия</li>
+        <li>Офтальмология</li>
+        <li>Лаборатория</li>
+        <li>УЗИ / Диагностика</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Клиника</h4>
+      <ul>
+        <li>О нас</li>
+        <li>Врачи</li>
+        <li>Цены</li>
+        <li>Новости</li>
+        <li>Лицензии</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <ul>
+        <li>+998 (71) 000-00-00</li>
+        <li>info@grandmedservice.uz</li>
+        <li>г. Ташкент, Узбекистан</li>
+        <li>Пн–Сб: 08:00–20:00</li>
+        <li>Вс: 09:00–16:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 GRAND MED SERVICE ООО. Все права защищены.</span>
+    <span>grandmedservice.uz</span>
+  </div>
+</footer>
+
+<script>
+// Scroll animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
