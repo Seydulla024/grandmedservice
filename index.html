@@ -3,436 +3,568 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GRAND MED SERVICE — Частная клиника</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Grand Med Service — Частная клиника</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --primary:#0B4F6C;
-  --primary-light:#1A7A9A;
-  --accent:#2EC4B6;
-  --accent-soft:#E8F8F7;
-  --gold:#C9A84C;
-  --text-dark:#0D1B2A;
-  --text-mid:#3A5068;
-  --text-soft:#7A9BB5;
-  --bg:#F5F9FC;
-  --white:#FFFFFF;
-  --border:rgba(11,79,108,0.12)
+  --red:#E63946;--red-dark:#c1121f;--blue:#1d3557;
+  --text:#1a1a2e;--text-mid:#4a5568;--text-soft:#9aa5b4;
+  --bg:#f8fafc;--white:#ffffff;--border:#e2e8f0;
+  --shadow:0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.08);
+  --r:16px;
 }
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-dark)}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
 a{text-decoration:none;color:inherit}
 
+/* TOP BAR */
+.topbar{background:#f1f5f9;border-bottom:1px solid var(--border);padding:8px 0;display:none}
+@media(min-width:1024px){.topbar{display:block}}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500}
+.topbar-links{display:flex;gap:20px}
+.topbar-links a{color:var(--text-mid);transition:color .2s}
+.topbar-links a:hover{color:var(--red)}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.topbar-badge{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:4px}
+.topbar-phone{font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
+.topbar-phone:hover{color:var(--red)}
+
 /* NAV */
-nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(11,79,108,0.06)}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-icon{width:38px;height:38px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center}
-.logo-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2}
-.logo-text{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--primary);line-height:1.2}
-.logo-sub{font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:500;text-transform:uppercase}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{font-size:14px;font-weight:500;color:var(--text-mid);transition:color 0.2s}
-.nav-links a:hover{color:var(--primary)}
-.nav-btn{background:var(--primary);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s}
-.nav-btn:hover{background:var(--primary-light)}
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo img{height:44px;width:auto;object-fit:contain}
+.nav-links{display:none;gap:24px;list-style:none}
+@media(min-width:1024px){.nav-links{display:flex}}
+.nav-links a{font-size:14px;font-weight:600;color:var(--text);transition:color .2s}
+.nav-links a:hover{color:var(--red)}
+.nav-phone{display:none;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--text)}
+.nav-phone:hover{color:var(--red)}
+@media(min-width:1024px){.nav-phone{display:flex}}
+.nav-cta{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border:none;padding:10px 22px;border-radius:40px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .25s;white-space:nowrap;box-shadow:0 4px 12px rgba(230,57,70,0.3)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(230,57,70,0.4)}
+
+/* FLOATING BUTTONS */
+.float-btns{position:fixed;bottom:24px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:200}
+.float-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 16px rgba(0,0,0,0.2);cursor:pointer;transition:transform .2s,box-shadow .2s;text-decoration:none}
+.float-btn:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(0,0,0,0.25)}
+.float-call{background:linear-gradient(135deg,#25d366,#128c7e)}
+.float-tg{background:linear-gradient(135deg,#229ed9,#1a7ab5)}
+.float-wa{background:linear-gradient(135deg,#25d366,#128c7e)}
+.float-top{background:linear-gradient(135deg,var(--red),var(--red-dark));opacity:0;pointer-events:none;transition:opacity .3s}
+.float-top.show{opacity:1;pointer-events:all}
+
+/* SEARCHBAR */
+.searchbar{max-width:1200px;margin:0 auto;padding:16px 24px}
+.search-wrap{display:flex;gap:10px;align-items:center}
+.search-input{flex:1;padding:12px 20px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;font-family:'Manrope',sans-serif;background:var(--white);color:var(--text);outline:none;transition:border .2s}
+.search-input:focus{border-color:var(--red)}
+.search-input::placeholder{color:var(--text-soft)}
+.search-btn{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border:none;padding:12px 28px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;display:flex;align-items:center;gap:8px;white-space:nowrap}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,var(--primary) 0%,#0D6B8A 60%,#0F7F9E 100%);padding:5rem 2rem 4rem;display:flex;align-items:center;gap:3rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.05)}
-.hero::after{content:'';position:absolute;right:60px;bottom:-60px;width:250px;height:250px;border-radius:50%;background:rgba(46,196,182,0.12)}
-.hero-content{flex:1;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:#E8C96A;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.2rem}
-.hero h1{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;font-weight:700;line-height:1.15;margin-bottom:1rem}
-.hero h1 span{color:var(--accent)}
-.hero p{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;max-width:420px;margin-bottom:2rem}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn-primary{background:var(--accent);color:var(--text-dark);border:none;padding:13px 26px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
-.btn-primary:hover{background:#25b0a3}
-.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.4);padding:13px 26px;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
-.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.08)}
-.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.15)}
-.stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--accent)}
-.stat-label{font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px}
-.hero-card-wrap{flex:0 0 300px;z-index:1}
-.hero-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:1.5rem}
-.hero-card-title{color:rgba(255,255,255,0.9);font-size:14px;font-weight:500;margin-bottom:1rem}
-.doctor-list{display:flex;flex-direction:column;gap:10px}
-.doctor-item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 12px}
-.doc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
-.doc-name{font-size:13px;font-weight:500;color:#fff}
-.doc-spec{font-size:11px;color:rgba(255,255,255,0.6)}
-.doc-dot{margin-left:auto;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.hero{background:var(--white);padding:48px 24px 56px}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff0f0;border:1px solid #ffc9c9;color:var(--red);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:20px}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--text);line-height:1.15;margin-bottom:18px}
+.hero h1 span{color:var(--red)}
+.hero-desc{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:28px;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.btn-red{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border:none;padding:13px 28px;border-radius:40px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .25s;box-shadow:0 4px 14px rgba(230,57,70,0.35);display:inline-flex;align-items:center;gap:8px}
+.btn-red:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(230,57,70,0.45)}
+.btn-ghost{background:transparent;color:var(--text);border:1.5px solid var(--border);padding:13px 28px;border-radius:40px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost:hover{border-color:var(--red);color:var(--red)}
+.hero-stats{display:flex;gap:28px;padding-top:24px;border-top:1px solid var(--border)}
+.stat-val{font-size:2rem;font-weight:800;color:var(--red);line-height:1}
+.stat-label{font-size:12px;color:var(--text-soft);margin-top:4px;font-weight:500}
+.hero-cards{display:flex;flex-direction:column;gap:12px}
+.hero-info-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:14px;transition:border-color .2s}
+.hero-info-card:hover{border-color:var(--red)}
+.card-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.card-title{font-size:13px;font-weight:700;color:var(--text)}
+.card-sub{font-size:12px;color:var(--text-soft)}
+.badge-live{display:inline-flex;align-items:center;gap:4px;background:#dcfce7;color:#16a34a;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
+.badge-live::before{content:'';width:5px;height:5px;border-radius:50%;background:#16a34a;animation:blink 1.5s infinite}
 
 /* SECTION */
-.section{padding:4rem 2rem}
-.section-header{text-align:center;margin-bottom:3rem}
-.section-tag{font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
-.section h2{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--primary);font-weight:700}
-.section-sub{font-size:15px;color:var(--text-soft);margin-top:.5rem}
+.section{padding:56px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-head{margin-bottom:36px}
+.section-head h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;color:var(--text);margin-bottom:8px}
+.section-head p{font-size:15px;color:var(--text-mid)}
 
 /* SERVICES */
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem}
-.service-card{background:#fff;border-radius:16px;padding:1.5rem 1.2rem;border:1px solid var(--border);cursor:pointer;transition:all 0.25s;text-align:center}
-.service-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 32px rgba(11,79,108,0.1)}
-.service-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:26px}
-.service-card h3{font-size:14px;font-weight:600;color:var(--primary);margin-bottom:6px}
-.service-card p{font-size:12px;color:var(--text-soft);line-height:1.6}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:24px 18px;cursor:pointer;transition:all .25s;text-align:center}
+.service-card:hover{border-color:var(--red);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.s-icon{width:52px;height:52px;border-radius:12px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:24px}
+.s-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px}
+.s-desc{font-size:12px;color:var(--text-soft);line-height:1.6}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.why-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;box-shadow:var(--shadow)}
+.why-emoji{font-size:36px}
+.why-card h3{font-size:14px;font-weight:700;color:var(--text);line-height:1.4}
 
 /* DOCTORS */
-.doctors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
-.doctor-card{background:#fff;border-radius:18px;border:1px solid var(--border);overflow:hidden;transition:all 0.25s}
-.doctor-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(11,79,108,0.1)}
-.doc-header{padding:1.5rem 1.2rem 1rem;text-align:center}
-.doc-avatar-lg{width:72px;height:72px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:#fff}
-.doc-card-name{font-size:15px;font-weight:600;color:var(--primary);margin-bottom:3px}
-.doc-card-spec{font-size:12px;color:var(--accent);font-weight:500}
-.doc-card-exp{font-size:12px;color:var(--text-soft);margin-top:4px}
-.doc-footer{padding:12px 1.2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.doc-rating{font-size:13px;color:var(--gold);font-weight:600}
-.doc-btn{font-size:12px;color:var(--primary);background:var(--accent-soft);border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;transition:background 0.2s}
-.doc-btn:hover{background:#c8efec}
+.doctors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.doctor-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .25s;box-shadow:var(--shadow)}
+.doctor-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.doc-avatar{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:800;color:#fff}
+.doc-body{padding:16px}
+.doc-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
+.doc-spec{font-size:12px;color:var(--red);font-weight:600;margin-bottom:4px}
+.doc-exp{font-size:12px;color:var(--text-soft)}
+.doc-footer{padding:12px 16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.doc-rating{font-size:13px;color:#f59e0b;font-weight:700}
+.doc-btn{font-size:12px;color:var(--red);background:#fff0f0;border:none;padding:6px 14px;border-radius:8px;cursor:pointer;font-family:'Manrope',sans-serif;font-weight:600;transition:all .2s}
+.doc-btn:hover{background:var(--red);color:#fff}
 
 /* APPOINTMENT */
-.appt-section{background:#fff;margin:0 2rem 4rem;border-radius:20px;border:1px solid var(--border);padding:3rem;display:flex;gap:3rem;align-items:flex-start}
-.appt-left{flex:1}
-.appt-left h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--primary);margin-bottom:.8rem}
-.appt-left p{color:var(--text-soft);font-size:14px;line-height:1.7;margin-bottom:1.5rem}
-.contact-items{display:flex;flex-direction:column;gap:10px}
-.contact-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid)}
-.contact-item i{font-size:18px;color:var(--accent)}
-.appt-form{flex:1}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-.form-group{display:flex;flex-direction:column;gap:5px}
-.form-group label{font-size:12px;font-weight:500;color:var(--text-mid)}
-.form-group input,.form-group select{padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text-dark);background:var(--bg);outline:none;transition:border 0.2s}
-.form-group input:focus,.form-group select:focus{border-color:var(--accent);background:#fff}
-.form-submit{width:100%;background:var(--primary);color:#fff;border:none;padding:13px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;margin-top:4px}
-.form-submit:hover{background:var(--primary-light)}
+.appt-section{background:var(--white);padding:56px 24px}
+.appt-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:768px){.appt-inner{grid-template-columns:1fr}}
+.appt-left h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:var(--text);margin-bottom:12px}
+.appt-left p{font-size:14px;color:var(--text-mid);margin-bottom:24px;line-height:1.7}
+.contact-list{display:flex;flex-direction:column;gap:0}
+.contact-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-mid);transition:color .2s}
+.contact-item.clickable{cursor:pointer}
+.contact-item.clickable:hover{color:var(--red)}
+.contact-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--red),var(--red-dark));border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;flex-shrink:0}
 
-/* WHY US */
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
-.why-card{background:#fff;border-radius:16px;padding:1.8rem 1.5rem;border:1px solid var(--border);text-align:center}
-.why-icon{width:60px;height:60px;background:var(--accent-soft);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:26px;color:var(--accent)}
-.why-card h3{font-size:15px;font-weight:600;color:var(--primary);margin-bottom:8px}
-.why-card p{font-size:13px;color:var(--text-soft);line-height:1.6}
+/* SOCIAL LINKS */
+.social-links{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.soc-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:600;transition:all .2s;text-decoration:none}
+.soc-btn:hover{transform:translateY(-2px);opacity:.9}
+.soc-tg{background:#229ed9;color:#fff}
+.soc-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
+.soc-yt{background:#ff0000;color:#fff}
+.soc-wa{background:#25d366;color:#fff}
+.soc-fb{background:#1877f2;color:#fff}
+
+.form-wrap{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:28px}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:12px;font-weight:600;color:var(--text-mid);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+.form-input,.form-select{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Manrope',sans-serif;color:var(--text);background:var(--white);outline:none;transition:border .2s}
+.form-input:focus,.form-select:focus{border-color:var(--red)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border:none;padding:14px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .25s;margin-top:4px;box-shadow:0 4px 14px rgba(230,57,70,0.3)}
+.form-submit:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(230,57,70,0.4)}
+
+/* MAP */
+.map-section{padding:0 24px 56px}
+.map-inner{max-width:1200px;margin:0 auto}
+.map-wrap{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md)}
 
 /* FOOTER */
-footer{background:var(--primary);color:rgba(255,255,255,0.8);padding:3rem 2rem 1.5rem}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
-.footer-brand-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff}
-.footer-brand-sub{font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:500;text-transform:uppercase}
-.footer-brand p{font-size:13px;margin-top:.8rem;color:rgba(255,255,255,0.6);line-height:1.7}
-.footer-col h4{font-size:13px;font-weight:600;color:#fff;margin-bottom:1rem;letter-spacing:.5px}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
-.footer-col ul li{font-size:13px;color:rgba(255,255,255,0.6)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.2rem;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.4)}
+footer{background:var(--white);border-top:1px solid var(--border);padding:40px 24px 20px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;margin-bottom:28px}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr}}
+.footer-logo img{height:40px;width:auto;margin-bottom:14px}
+.footer-brand p{font-size:13px;color:var(--text-soft);line-height:1.7;margin-bottom:14px}
+.footer-phone{font-size:18px;font-weight:800;color:var(--text);display:inline-flex;align-items:center;gap:6px}
+.footer-phone:hover{color:var(--red)}
+.footer-phone-sub{font-size:12px;color:var(--text-soft);margin-top:2px}
+.footer-socials{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.f-soc{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;transition:all .2s;flex-shrink:0}
+.f-soc:hover{transform:translateY(-2px)}
+.footer-col h4{font-size:12px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col ul li{font-size:13px;color:var(--text-soft);cursor:pointer;transition:color .2s}
+.footer-col ul li:hover{color:var(--red)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:16px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-soft);flex-wrap:wrap;gap:8px}
 
-/* SCROLL ANIMATION */
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
-.fade-in.visible{opacity:1;transform:none}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
 
-@media(max-width:768px){
-  .hero{flex-direction:column;padding:3rem 1rem}
-  .hero h1{font-size:2rem}
-  .hero-card-wrap{display:none}
-  .hero-stats{gap:1rem;flex-wrap:wrap}
-  .nav-links{display:none}
-  .appt-section{flex-direction:column;margin:0 1rem 2rem;padding:1.5rem}
-  .footer-grid{grid-template-columns:1fr 1fr}
+@media(max-width:1024px){
+  .hero{padding:32px 16px 40px}
+  .section{padding:40px 16px}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .doctors-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .form-grid{grid-template-columns:1fr}
+  .hero-stats{gap:16px}
+  .footer-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <!-- Кнопка "наверх" -->
+  <a href="#" class="float-btn float-top" id="toTop" title="Наверх">⬆️</a>
+  <!-- Telegram -->
+  <a href="https://t.me/grandmedservice" target="_blank" class="float-btn float-tg" title="Telegram">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+  </a>
+  <!-- WhatsApp -->
+  <a href="https://wa.me/998710000000" target="_blank" class="float-btn float-wa" title="WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <!-- Звонок -->
+  <a href="tel:+998710000000" class="float-btn float-call" title="Позвонить">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-links">
+      <a href="#">О клинике</a>
+      <a href="#">Новости</a>
+      <a href="#">Акции<span class="topbar-badge">%</span></a>
+      <a href="#">Страхование</a>
+    </div>
+    <div class="topbar-right">
+      <!-- Кликабельный телефон в topbar -->
+      <a href="tel:+998612241117" class="topbar-phone">
+        📞 +998 (61) 224-11-17
+      </a>
+      <a href="https://t.me/grandmedservice" target="_blank" style="color:var(--text-mid);font-weight:500">
+        Результаты анализов <span class="topbar-badge">24/7</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- NAV -->
 <nav>
-  <div class="logo">
-    <div class="logo-icon">
-      <svg viewBox="0 0 24 24"><path d="M12 2L12 22M2 12L22 12" stroke-linecap="round"/><rect x="7" y="7" width="10" height="10" rx="2" stroke-width="1.5"/></svg>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAFjUlEQVR42u3YW4xdVRnA8d86+8xMpzedjr1AKaAWLBaUWjCaAq0ELyQmahR5kEuCAgEV34yJl+iLwWAMmtQYDQ9EH7AhkuAtRB5EvIBABQlQFBSstqXai4V2pjNnn+XD/o7djDNhaNDEZP2Tnb3PXt9a31rf+i5rHwqFQqFQKBQKhUKhUCgUCoVCoVAoFAqFQuGVJh1Pp0xK5HjuICfyjOekkesP3s/Qm9tjhFyaKTOX/Iy2eP2iPlrz0J5fu1+i/4pbNc9h2DxPg+fj2Jh8nJv5XyezMHND6/eGzMpMJ3Nm5sR4P545JZ5PjX4rMstCblm0dTNrM0OZ5ZkTQu7N0e/EzFmZqqXz7JCrMutjvPF4HsssjftI5qTMCdHv3GgbjT7r5zJ0ernhkzkJtyXOy7wPX8NT+D4+h2m8C9fhGizHsyG3OoZ7Lw5o+h/BfmzB9RjFP3EOvodNeB0eSlyZeSe2Yjd+qNmkX+CPuAo74vobfo9rcRAP4VO4v/X+1/hoYqqdHmhibr4MZFfi1Hjegq/idrwdN+NHYZgupnAyJnF+9BnHTXgab8HhkH2Txug1FuKyxFewCJ/Euui/KXR8Ngy2LXEZhvF1PIIVGMNp+Ev0ewe+gGewATcmLhc5Jr04B87fMKmZMI1bTuRmMftCeQ+P4hKchcewANtxduzQeHjPVBjiaPQbjsmvD6McjPtNmY04FDIvZEbwXVyB5/ATfCA3nrIb78frsQ1r8Nrw5i4m0E2NVz+M6zNXos6z2KEzzzDqDnJC7Mbjscg+XsCHYhKd2O2VsZhdOAM7Y8FviAnWcaWQewanx+/DmnzyMPa2PK/GaGo87SrcGjqfjdBJGsMtw1/xqmh/OnTAdG7mMxYG2zGzkg3otspfmiXndGJCm3Bp5uN4TQz46vCKGn/Aqoj5EXwwPGdhjNEL7/kIhsKoq2NCCyOnrIl7hcX4GfaEnlWxIYcznwlP/bMm3+zAb0LnDyLkTolctSZyzdIw+Ap8MXT8Fg/EfKZm9ZhEP1EnejOuqQihi3BOOraQR/E23BJtdezg/mibwOfxbkzUza7dhrtxX795vys1iz+E+2JRd+EJPBg55OpYwDW4NTF9lDvwsUje38TGPt8KI+6s+VN49AP4HZ4Mr9oaIfh4FIpLcEviaJrFY1J4y4a4xsKCA+/pRYLbGM8/jQndHXljK54Pi/fCW/oYqZns069Y0GGqbow/3GnaR/GPSFpVyzNzXP3wxomockMVe2oWVBypG689jMmKJRGXRyqmK/o96i51rxl/otusaV946v7QtzR0PRdte1Mz5rFQCi9YFglyaEY534dPRHW4Ed+Jwe+IWB4NBVXLJacqctUstvcUy9fy96hOQ3XTPlI1v6ejfx3G7YfeA46dVKexuGrGX1I1uWck2g+GQXoD+W4k+G6T4HPoXRRjDtZ8sDXv/zi2dONIfG9cL5WEezHIHlyemh2di5Mj3J6M8v1LbMaXcUFswNIIvQuiMo3HxB/BG+O+WRMegwr3K1wa55bJyG/nYW2EYU9zyNweyX5vnF1eFu3k23mJM0wvMvyeOOhN5mPW/zffoLqBehGbp7l6hJunOC01J9Xx97Dk54z0WN3j4g5n1Gzo8Fi/WWBV8eOaLRX39FmTWLeYiee58C7uv4hPd/m2xm26E5yfmwPhuR2211wxzJd6cZCc4sEPU21r1jDrns/MM/P9phl85L0VOxO7B+/mMGI/qsPGqArrYtefiNJ9ehzmxsLgvQjDVeFJu6IaHcKZ4U11hPU9cV45FFXmQJyJhiOsD2BJjDka9ztbH5qF/9nfDu2/FeY5dmr9HaBVddI89KeWfPtdvxX2eZZx8ix6+2WrC4VCoVAoFAqFQqFQKBQKhUKhUCgUCoVCofD/xr8AB8DiHef/NFgAAAAASUVORK5CYII=" alt="Grand Med Service" />
     </div>
-    <div>
-      <div class="logo-text">GRAND MED SERVICE</div>
-      <div class="logo-sub">Частная клиника · ООО</div>
-    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#doctors">Врачи</a></li>
+      <li><a href="#why">О нас</a></li>
+      <li><a href="#appointment">Контакты</a></li>
+    </ul>
+    <!-- Телефон в навигации — кликабельный -->
+    <a href="tel:+998612241117" class="nav-phone">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      +998 (61) 224-11-17
+    </a>
+    <button class="nav-cta" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button>
   </div>
-  <ul class="nav-links">
-    <li><a href="#services">Услуги</a></li>
-    <li><a href="#doctors">Врачи</a></li>
-    <li><a href="#why">О нас</a></li>
-    <li><a href="#appointment">Контакты</a></li>
-  </ul>
-  <button class="nav-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться на приём</button>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">⭐ Ташкент — надёжная клиника</div>
-    <h1>Ваше здоровье —<br>наш главный <span>приоритет</span></h1>
-    <p>GRAND MED SERVICE — современное оборудование и опытные специалисты для вашего здоровья и здоровья вашей семьи.</p>
-    <div class="hero-btns">
-      <button class="btn-primary" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться на приём</button>
-      <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Наши услуги →</button>
-    </div>
-    <div class="hero-stats">
-      <div><div class="stat-num">15+</div><div class="stat-label">Лет опыта</div></div>
-      <div><div class="stat-num">8000+</div><div class="stat-label">Пациентов</div></div>
-      <div><div class="stat-num">25+</div><div class="stat-label">Специалистов</div></div>
-      <div><div class="stat-num">24/7</div><div class="stat-label">Помощь</div></div>
-    </div>
-  </div>
-  <div class="hero-card-wrap">
-    <div class="hero-card">
-      <div class="hero-card-title">Онлайн-запись · Сегодня</div>
-      <div class="doctor-list">
-        <div class="doctor-item">
-          <div class="doc-av" style="background:#2EC4B6">АК</div>
-          <div><div class="doc-name">Азиз Каримов</div><div class="doc-spec">Кардиолог</div></div>
-          <div class="doc-dot"></div>
-        </div>
-        <div class="doctor-item">
-          <div class="doc-av" style="background:#C9A84C">МЮ</div>
-          <div><div class="doc-name">Малика Юсупова</div><div class="doc-spec">Невропатолог</div></div>
-          <div class="doc-dot"></div>
-        </div>
-        <div class="doctor-item">
-          <div class="doc-av" style="background:#0B4F6C">ША</div>
-          <div><div class="doc-name">Шерзод Алиев</div><div class="doc-spec">Терапевт</div></div>
-          <div class="doc-dot"></div>
-        </div>
-      </div>
-    </div>
+<!-- SEARCHBAR -->
+<div class="searchbar">
+  <div class="search-wrap">
+    <input class="search-input" type="text" placeholder="Поиск услуг, врачей, анализов..." />
+    <button class="search-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      Найти
+    </button>
   </div>
 </div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Частная клиника · г.Нукус</div>
+      <h1>Лучшая частная<br>клиника для вас<br>и вашей <span>семьи</span></h1>
+      <p class="hero-desc">Grand Med Service — многопрофильная клиника с современным оборудованием, опытными специалистами и индивидуальным подходом к каждому пациенту.</p>
+      <div class="hero-btns">
+        <button class="btn-red" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">📅 Записаться на приём</button>
+        <!-- Кнопка звонка -->
+        <a href="tel:+998612241117" class="btn-ghost">📞 Позвонить</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-val">5+</div><div class="stat-label">Лет опыта</div></div>
+        <div><div class="stat-val">12к+</div><div class="stat-label">Пациентов</div></div>
+        <div><div class="stat-val">25+</div><div class="stat-label">Врачей</div></div>
+      </div>
+    </div>
+    <div class="hero-cards">
+      <div class="hero-info-card">
+        <div class="card-icon" style="background:#fff0f0">🏥</div>
+        <div><div class="card-title">Современная диагностика</div><div class="card-sub">МРТ · КТ · УЗИ · Лаборатория</div></div>
+      </div>
+      <div class="hero-info-card">
+        <div class="card-icon" style="background:#f0fff4">👨‍⚕️</div>
+        <div><div class="card-title">Опытные специалисты</div><div class="card-sub">25+ врачей высшей категории</div></div>
+      </div>
+      <!-- Кликабельная карточка с телефоном -->
+      <a href="tel:+998612241117" class="hero-info-card" style="cursor:pointer">
+        <div class="card-icon" style="background:#fff0f0">📞</div>
+        <div><div class="card-title">+998 (61) 224-11-17</div><div class="card-sub">Нажмите, чтобы позвонить</div></div>
+        <div class="badge-live" style="margin-left:auto">Онлайн</div>
+      </a>
+      <a href="https://t.me/grandcitynukus" target="_blank" class="hero-info-card" style="cursor:pointer">
+        <div class="card-icon" style="background:#e8f4fd">✈️</div>
+        <div><div class="card-title">Telegram</div><div class="card-sub">Написать в Telegram</div></div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES -->
-<div class="section fade-in" id="services">
-  <div class="section-header">
-    <div class="section-tag">Услуги / Xizmatlar</div>
-    <h2>Медицинские услуги</h2>
-    <div class="section-sub">Современная диагностика и лечение</div>
-  </div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon" style="background:#E8F8F7"><i class="ti ti-heart-rate-monitor" style="color:#2EC4B6"></i></div>
-      <h3>Кардиология</h3>
-      <p>Диагностика и лечение заболеваний сердечно-сосудистой системы</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon" style="background:#EEF4FF"><i class="ti ti-brain" style="color:#534AB7"></i></div>
-      <h3>Неврология</h3>
-      <p>Лечение заболеваний нервной системы</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon" style="background:#FFF8E8"><i class="ti ti-microscope" style="color:#C9A84C"></i></div>
-      <h3>Лаборатория</h3>
-      <p>Современные анализы и обследования</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon" style="background:#FFF0F0"><i class="ti ti-stethoscope" style="color:#D85A30"></i></div>
-      <h3>Терапия</h3>
-      <p>Общее лечение и профилактика заболеваний</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon" style="background:#F0FFF4"><i class="ti ti-eye" style="color:#3B6D11"></i></div>
-      <h3>Офтальмология</h3>
-      <p>Диагностика и лечение заболеваний глаз</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon" style="background:#FFF5EC"><i class="ti ti-scan" style="color:#854F0B"></i></div>
-      <h3>УЗИ / Диагностика</h3>
-      <p>Ультразвуковые и МРТ обследования</p>
+<section class="section reveal" id="services">
+  <div class="section-inner">
+    <div class="section-head"><h2>Медицинские услуги</h2><p>Полный спектр диагностики и лечения</p></div>
+    <div class="services-grid">
+      <div class="service-card"><div class="s-icon" style="background:#fff0f0">❤️</div><div class="s-name">Кардиология</div><div class="s-desc">Диагностика и лечение сердечно-сосудистых заболеваний</div></div>
+      <div class="service-card"><div class="s-icon" style="background:#f0eeff">🧠</div><div class="s-name">Неврология</div><div class="s-desc">Лечение заболеваний нервной системы</div></div>
+      <div class="service-card"><div class="s-icon" style="background:#fff8e6">🔬</div><div class="s-name">Лаборатория</div><div class="s-desc">Современные анализы. Результаты в день обращения</div></div>
+      <div class="service-card"><div class="s-icon" style="background:#f0fff4">🩺</div><div class="s-name">Терапия</div><div class="s-desc">Общее лечение и профилактика заболеваний</div></div>
+      <div class="service-card"><div class="s-icon" style="background:#eff6ff">👁️</div><div class="s-name">Офтальмология</div><div class="s-desc">Диагностика и лечение болезней глаз</div></div>
+      <div class="service-card"><div class="s-icon" style="background:#fef9ec">📡</div><div class="s-name">УЗИ · МРТ</div><div class="s-desc">Высокоточная диагностика последнего поколения</div></div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- WHY -->
+<section class="section reveal" id="why" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="section-head"><h2>Почему выбирают нас</h2><p>Мы заботимся о каждом пациенте</p></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-emoji">🏥</div><h3>Современное оборудование европейского производства</h3></div>
+      <div class="why-card"><div class="why-emoji">👩‍⚕️</div><h3>Международные медицинские протоколы и стандарты</h3></div>
+      <div class="why-card"><div class="why-emoji">🩺</div><h3>Комплексный подход к лечению каждого пациента</h3></div>
+      <div class="why-card"><div class="why-emoji">👨‍⚕️</div><h3>Команда врачей с международным опытом</h3></div>
+      <div class="why-card"><div class="why-emoji">🏛️</div><h3>Индивидуальное сопровождение каждого пациента</h3></div>
+      <div class="why-card"><div class="why-emoji">🎯</div><h3>Высокие стандарты безопасности и качества</h3></div>
+    </div>
+  </div>
+</section>
 
 <!-- DOCTORS -->
-<div class="section fade-in" id="doctors" style="background:#fff;padding:3rem 2rem">
-  <div class="section-header">
-    <div class="section-tag">Специалисты / Mutaxassislar</div>
-    <h2>Наши врачи</h2>
-    <div class="section-sub">Команда опытных и квалифицированных специалистов</div>
-  </div>
-  <div class="doctors-grid">
-    <div class="doctor-card">
-      <div class="doc-header">
-        <div class="doc-avatar-lg" style="background:#0B4F6C">АК</div>
-        <div class="doc-card-name">Азиз Каримов</div>
-        <div class="doc-card-spec">Кардиолог</div>
-        <div class="doc-card-exp">12 лет опыта</div>
+<section class="section reveal" id="doctors">
+  <div class="section-inner">
+    <div class="section-head"><h2>Наши врачи</h2><p>Опытные и квалифицированные специалисты</p></div>
+    <div class="doctors-grid">
+      <div class="doctor-card">
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#1d3557,#457b9d)">АК</div>
+        <div class="doc-body"><div class="doc-name">Зейнур Бухарбаев</div><div class="doc-spec">Кардиолог</div><div class="doc-exp">12 лет практики</div></div>
+        <div class="doc-footer"><div class="doc-rating">★★★★★ 4.7</div><button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button></div>
       </div>
-      <div class="doc-footer">
-        <div class="doc-rating">★ 4.9</div>
-        <button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button>
+      <div class="doctor-card">
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#e63946,#c1121f)">МЮ</div>
+        <div class="doc-body"><div class="doc-name">Мурат Бектурсинов</div><div class="doc-spec">Невролог</div><div class="doc-exp">20 лет практики</div></div>
+        <div class="doc-footer"><div class="doc-rating">★★★★★ 4.8</div><button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button></div>
       </div>
-    </div>
-    <div class="doctor-card">
-      <div class="doc-header">
-        <div class="doc-avatar-lg" style="background:#2EC4B6">МЮ</div>
-        <div class="doc-card-name">Малика Юсупова</div>
-        <div class="doc-card-spec">Невропатолог</div>
-        <div class="doc-card-exp">9 лет опыта</div>
+      <div class="doctor-card">
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#2d6a4f,#40916c)">ША</div>
+        <div class="doc-body"><div class="doc-name">Гулазия Салиеева</div><div class="doc-spec">Терапевт</div><div class="doc-exp">16 лет практики</div></div>
+        <div class="doc-footer"><div class="doc-rating">★★★★★ 4.5</div><button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button></div>
       </div>
-      <div class="doc-footer">
-        <div class="doc-rating">★ 4.8</div>
-        <button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button>
-      </div>
-    </div>
-    <div class="doctor-card">
-      <div class="doc-header">
-        <div class="doc-avatar-lg" style="background:#C9A84C">ША</div>
-        <div class="doc-card-name">Шерзод Алиев</div>
-        <div class="doc-card-spec">Терапевт</div>
-        <div class="doc-card-exp">7 лет опыта</div>
-      </div>
-      <div class="doc-footer">
-        <div class="doc-rating">★ 4.9</div>
-        <button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button>
-      </div>
-    </div>
-    <div class="doctor-card">
-      <div class="doc-header">
-        <div class="doc-avatar-lg" style="background:#993C1D">НХ</div>
-        <div class="doc-card-name">Нилуфар Хасанова</div>
-        <div class="doc-card-spec">Офтальмолог</div>
-        <div class="doc-card-exp">11 лет опыта</div>
-      </div>
-      <div class="doc-footer">
-        <div class="doc-rating">★ 4.7</div>
-        <button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button>
+      <div class="doctor-card">
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#7b2d8b,#9d4edd)">НХ</div>
+        <div class="doc-body"><div class="doc-name">Руслан Курбанов</div><div class="doc-spec">Офтальмолог</div><div class="doc-exp">11 лет практики</div></div>
+        <div class="doc-footer"><div class="doc-rating">★★★★★ 4.8</div><button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button></div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- WHY US -->
-<div class="section fade-in" id="why">
-  <div class="section-header">
-    <div class="section-tag">Почему мы</div>
-    <h2>Наши преимущества</h2>
-    <div class="section-sub">Мы заботимся о каждом пациенте</div>
-  </div>
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-icon"><i class="ti ti-certificate"></i></div>
-      <h3>Лицензированные врачи</h3>
-      <p>Все наши специалисты имеют действующие лицензии и регулярно повышают квалификацию</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon"><i class="ti ti-device-heart-monitor"></i></div>
-      <h3>Современное оборудование</h3>
-      <p>Клиника оснащена новейшим медицинским оборудованием европейского производства</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon"><i class="ti ti-clock-24"></i></div>
-      <h3>Работаем 24/7</h3>
-      <p>Экстренная медицинская помощь доступна круглосуточно без выходных дней</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon"><i class="ti ti-shield-check"></i></div>
-      <h3>Гарантия качества</h3>
-      <p>Мы гарантируем высокое качество медицинских услуг и заботливое отношение к пациентам</p>
-    </div>
-  </div>
-</div>
+</section>
 
 <!-- APPOINTMENT -->
-<div class="appt-section fade-in" id="appointment">
-  <div class="appt-left">
-    <h2>Записаться на приём</h2>
-    <p>Выберите удобное время, и наш специалист свяжется с вами в ближайшее время.</p>
-    <div class="contact-items">
-      <div class="contact-item"><i class="ti ti-phone"></i> +998 (71) 000-00-00</div>
-      <div class="contact-item"><i class="ti ti-brand-telegram"></i> @grandmedservice</div>
-      <div class="contact-item"><i class="ti ti-mail"></i> info@grandmedservice.uz</div>
-      <div class="contact-item"><i class="ti ti-map-pin"></i> г. Ташкент, Узбекистан</div>
-      <div class="contact-item"><i class="ti ti-clock"></i> Пн–Сб: 08:00–20:00 | Вс: 09:00–16:00</div>
+<section class="appt-section reveal" id="appointment">
+  <div class="appt-inner">
+    <div class="appt-left">
+      <h2>Запишитесь на приём</h2>
+      <p>Выберите удобное время — наш специалист свяжется с вами в ближайшее время.</p>
+      <div class="contact-list">
+
+        <!-- ТЕЛЕФОН — кликабельный, откроет набор номера -->
+        <a href="tel:+998612241117" class="contact-item clickable" style="text-decoration:none;color:inherit">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--text)">+998 (61) 224-11-17</div>
+            <div style="font-size:12px;color:var(--text-soft)">Нажмите для звонка · <span style="background:#dcfce7;color:#16a34a;font-size:11px;font-weight:700;padding:2px 7px;border-radius:10px">24/7</span></div>
+          </div>
+        </a>
+
+        <!-- TELEGRAM — кликабельный -->
+        <a href="https://t.me/grandcitynukus" target="_blank" class="contact-item clickable" style="text-decoration:none;color:inherit">
+          <div class="contact-icon" style="background:linear-gradient(135deg,#229ed9,#1a7ab5)">✈️</div>
+          <div>
+            <div style="font-weight:700;font-size:14px;color:var(--text)">@grandmedservice_bot</div>
+            <div style="font-size:12px;color:var(--text-soft)">Написать в Telegram</div>
+          </div>
+        </a>
+
+        <!-- WHATSAPP — кликабельный -->
+        <a href="https://wa.me/998919380404" target="_blank" class="contact-item clickable" style="text-decoration:none;color:inherit">
+          <div class="contact-icon" style="background:linear-gradient(135deg,#25d366,#128c7e)">💬</div>
+          <div>
+            <div style="font-weight:700;font-size:14px;color:var(--text)">WhatsApp</div>
+            <div style="font-size:12px;color:var(--text-soft)">Написать в WhatsApp</div>
+          </div>
+        </a>
+
+        <!-- EMAIL -->
+        <a href="mailto:info@grandmedservice8.uz" class="contact-item clickable" style="text-decoration:none;color:inherit">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div style="font-weight:600;font-size:14px;color:var(--text)">info@grandmedservice8.uz</div>
+            <div style="font-size:12px;color:var(--text-soft)">Написать на почту</div>
+          </div>
+        </a>
+
+        <!-- АДРЕС -->
+        <a href="https://maps.app.goo.gl/7f1XNHCVxL1dfvtJ8" target="_blank" class="contact-item clickable" style="text-decoration:none;color:inherit">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div style="font-weight:600;font-size:14px;color:var(--text)">г. Нукус, Каракалпакстан</div>
+            <div style="font-size:12px;color:var(--text-soft)">Открыть в картах</div>
+          </div>
+        </a>
+
+        <!-- ЧАСЫ -->
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div style="font-weight:600;font-size:14px;color:var(--text)">Пн–Пц: 09:00–17:00</div>
+            <div style="font-size:12px;color:var(--text-soft)">Сб: 09:00-16:00 Воскресенье: Выходной</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- КНОПКИ СОЦСЕТЕЙ -->
+      <div style="margin-top:20px">
+        <div style="font-size:12px;font-weight:700;color:var(--text-soft);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Мы в социальных сетях</div>
+        <div class="social-links">
+          <a href="https://t.me/grandcitynukus" target="_blank" class="soc-btn soc-tg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+            Telegram
+          </a>
+          <a href="https://www.instagram.com/grand_medservice" target="_blank" class="soc-btn soc-ig">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>
+            Instagram
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61574849386455" target="_blank" class="soc-btn soc-fb">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="appt-form">
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Имя и фамилия</label>
-        <input type="text" placeholder="Введите ваше имя" />
+
+    <div class="form-wrap">
+      <div style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:20px">Онлайн-запись на приём</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Имя и фамилия</label>
+          <input class="form-input" type="text" placeholder="Ваше имя">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Телефон</label>
+          <input class="form-input" type="tel" placeholder="+998 __ ___ __ __">
+        </div>
       </div>
       <div class="form-group">
-        <label>Номер телефона</label>
-        <input type="tel" placeholder="+998 __ ___ __ __" />
-      </div>
-      <div class="form-group">
-        <label>Специализация</label>
-        <select>
-          <option>Выберите...</option>
+        <label class="form-label">Специализация</label>
+        <select class="form-select">
+          <option value="">Выберите специалиста...</option>
           <option>Кардиолог</option>
-          <option>Невропатолог</option>
+          <option>Невролог</option>
           <option>Терапевт</option>
           <option>Офтальмолог</option>
-          <option>Лаборатория</option>
           <option>УЗИ / Диагностика</option>
+          <option>Лаборатория</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Дата приёма</label>
-        <input type="date" />
+        <label class="form-label">Дата приёма</label>
+        <input class="form-input" type="date">
+      </div>
+      <button class="form-submit" onclick="alert('Ваша заявка принята!\n\nМы свяжемся с вами в ближайшее время.\n\nTel: +998 (61) 224-11-17')">Записаться на приём →</button>
+      <!-- Или позвонить -->
+      <div style="text-align:center;margin-top:14px;font-size:13px;color:var(--text-soft)">
+        или <a href="tel:+998612241117" style="color:var(--red);font-weight:700">позвоните нам +998 (61) 224-11-17</a>
       </div>
     </div>
-    <button class="form-submit" onclick="alert('Ваша заявка принята! Мы свяжемся с вами в ближайшее время.')">Записаться на приём →</button>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-section">
+  <div class="map-inner">
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191983.46995671124!2d69.07225!3d41.2994958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5bocd44f5d70bae!2sTashkent!5e0!3m2!1sru!2s!4v1234567890"
+        width="100%" height="350" style="border:0;display:block" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      <iframe
+    </div>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="footer-brand-name">GRAND MED SERVICE</div>
-      <div class="footer-brand-sub">Частная клиника · ООО</div>
-      <p>Надёжная медицинская помощь для вас и вашей семьи в Ташкенте.</p>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAFjUlEQVR42u3YW4xdVRnA8d86+8xMpzedjr1AKaAWLBaUWjCaAq0ELyQmahR5kEuCAgEV34yJl+iLwWAMmtQYDQ9EH7AhkuAtRB5EvIBABQlQFBSstqXai4V2pjNnn+XD/o7djDNhaNDEZP2Tnb3PXt9a31rf+i5rHwqFQqFQKBQKhUKhUCgUCoVCoVAoFAqFQuGVJh1Pp0xK5HjuICfyjOekkesP3s/Qm9tjhFyaKTOX/Iy2eP2iPlrz0J5fu1+i/4pbNc9h2DxPg+fj2Jh8nJv5XyezMHND6/eGzMpMJ3Nm5sR4P545JZ5PjX4rMstCblm0dTNrM0OZ5ZkTQu7N0e/EzFmZqqXz7JCrMutjvPF4HsssjftI5qTMCdHv3GgbjT7r5zJ0ernhkzkJtyXOy7wPX8NT+D4+h2m8C9fhGizHsyG3OoZ7Lw5o+h/BfmzB9RjFP3EOvodNeB0eSlyZeSe2Yjd+qNmkX+CPuAo74vobfo9rcRAP4VO4v/X+1/hoYqqdHmhibr4MZFfi1Hjegq/idrwdN+NHYZgupnAyJnF+9BnHTXgab8HhkH2Txug1FuKyxFewCJ/Euui/KXR8Ngy2LXEZhvF1PIIVGMNp+Ev0ewe+gGewATcmLhc5Jr04B87fMKmZMI1bTuRmMftCeQ+P4hKchcewANtxduzQeHjPVBjiaPQbjsmvD6McjPtNmY04FDIvZEbwXVyB5/ATfCA3nrIb78frsQ1r8Nrw5i4m0E2NVz+M6zNXos6z2KEzzzDqDnJC7Mbjscg+XsCHYhKd2O2VsZhdOAM7Y8FviAnWcaWQewanx+/DmnzyMPa2PK/GaGo87SrcGjqfjdBJGsMtw1/xqmh/OnTAdG7mMxYG2zGzkg3otspfmiXndGJCm3Bp5uN4TQz46vCKGn/Aqoj5EXwwPGdhjNEL7/kIhsKoq2NCCyOnrIl7hcX4GfaEnlWxIYcznwlP/bMm3+zAb0LnDyLkTolctSZyzdIw+Ap8MXT8Fg/EfKZm9ZhEP1EnejOuqQihi3BOOraQR/E23BJtdezg/mibwOfxbkzUza7dhrtxX795vys1iz+E+2JRd+EJPBg55OpYwDW4NTF9lDvwsUje38TGPt8KI+6s+VN49AP4HZ4Mr9oaIfh4FIpLcEviaJrFY1J4y4a4xsKCA+/pRYLbGM8/jQndHXljK54Pi/fCW/oYqZns069Y0GGqbow/3GnaR/GPSFpVyzNzXP3wxomockMVe2oWVBypG689jMmKJRGXRyqmK/o96i51rxl/otusaV946v7QtzR0PRdte1Mz5rFQCi9YFglyaEY534dPRHW4Ed+Jwe+IWB4NBVXLJacqctUstvcUy9fy96hOQ3XTPlI1v6ejfx3G7YfeA46dVKexuGrGX1I1uWck2g+GQXoD+W4k+G6T4HPoXRRjDtZ8sDXv/zi2dONIfG9cL5WEezHIHlyemh2di5Mj3J6M8v1LbMaXcUFswNIIvQuiMo3HxB/BG+O+WRMegwr3K1wa55bJyG/nYW2EYU9zyNweyX5vnF1eFu3k23mJM0wvMvyeOOhN5mPW/zffoLqBehGbp7l6hJunOC01J9Xx97Dk54z0WN3j4g5n1Gzo8Fi/WWBV8eOaLRX39FmTWLeYiee58C7uv4hPd/m2xm26E5yfmwPhuR2211wxzJd6cZCc4sEPU21r1jDrns/MM/P9phl85L0VOxO7B+/mMGI/qsPGqArrYtefiNJ9ehzmxsLgvQjDVeFJu6IaHcKZ4U11hPU9cV45FFXmQJyJhiOsD2BJjDka9ztbH5qF/9nfDu2/FeY5dmr9HaBVddI89KeWfPtdvxX2eZZx8ix6+2WrC4VCoVAoFAqFQqFQKBQKhUKhUCgUCoVCofD/xr8AB8DiHef/NFgAAAAASUVORK5CYII=" alt="Grand Med Service"></div>
+        <p>Надёжная медицинская помощь для вас и вашей семьи в г.Нукусе</p>
+        <!-- Кликабельный телефон в футере -->
+        <a href="tel:+998612241117" class="footer-phone">📞 +998 (61) 224-11-17</a>
+        <div class="footer-phone-sub">Колл-центр</div>
+        <div class="footer-socials">
+          <a href="https://t.me/grandcitynukus" target="_blank" class="f-soc" style="background:#229ed9" title="Telegram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/grand_medservice" target="_blank" class="f-soc" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="white" stroke-width="2.5"/><circle cx="12" cy="12" r="5" fill="none" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>
+          </a>
+          <a href="https://facebook.com/grandmedservice" target="_blank" target="_blank" class="f-soc" style="background:#1877f2" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://wa.me/998919380404" target="_blank" class="f-soc" style="background:#25d366" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <ul><li>Кардиология</li><li>Неврология</li><li>Терапия</li><li>Офтальмология</li><li>Лаборатория</li><li>УЗИ · МРТ</li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Клиника</h4>
+        <ul><li>О нас</li><li>Врачи</li><li><li>Новости</li><li>Карьера</li><li>Лицензии</li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="tel:+998612241117" style="color:inherit">📞 +998 (61) 224-11-17</a></li>
+          <li><a href="mailto:info@grandmedservice8.uz" style="color:inherit">✉️ info@grandmedservice8.uz</a></li>
+          <li><a href="https://maps.app.goo.gl/7f1XNHCVxL1dfvtJ8" target="_blank" style="color:inherit">📍 г. Нукус</a></li>
+          <li>🕐 Пн–Пц: 09:00–17:00</li>
+          <li>🕐 Сб: 09:00–16:00 Вс: Выходной</li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Услуги</h4>
-      <ul>
-        <li>Кардиология</li>
-        <li>Неврология</li>
-        <li>Терапия</li>
-        <li>Офтальмология</li>
-        <li>Лаборатория</li>
-        <li>УЗИ / Диагностика</li>
-      </ul>
+    <div class="footer-bottom">
+      <span>© 2022 Grand Med Service МЧЖ. Все права защищены.</span>
+      <span>grandmedservice.uz</span>
     </div>
-    <div class="footer-col">
-      <h4>Клиника</h4>
-      <ul>
-        <li>О нас</li>
-        <li>Врачи</li>
-        <li>Цены</li>
-        <li>Новости</li>
-        <li>Лицензии</li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Контакты</h4>
-      <ul>
-        <li>+998 (71) 000-00-00</li>
-        <li>info@grandmedservice.uz</li>
-        <li>г. Ташкент, Узбекистан</li>
-        <li>Пн–Сб: 08:00–20:00</li>
-        <li>Вс: 09:00–16:00</li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2024 GRAND MED SERVICE ООО. Все права защищены.</span>
-    <span>grandmedservice.uz</span>
   </div>
 </footer>
 
 <script>
-// Scroll animation
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.1});
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+// Scroll reveal
+const obs = new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('on')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Кнопка "наверх" — показывать после скролла
+window.addEventListener('scroll',()=>{
+  document.getElementById('toTop').classList.toggle('show', scrollY > 400);
+  document.querySelector('nav').style.boxShadow = scrollY > 10 ? '0 4px 20px rgba(0,0,0,0.1)' : '0 1px 3px rgba(0,0,0,0.08)';
+});
 </script>
 </body>
 </html>
