@@ -10,7 +10,7 @@
 :root{
   --red:#E63946;--red-dark:#c1121f;--blue:#1d3557;
   --text:#1a1a2e;--text-mid:#4a5568;--text-soft:#9aa5b4;
-  --bg:#f8fafc;--white:#ffffff;--border:#e2e8f0;
+  --bg:#ffffff;--white:#ffffff;--border:#e2e8f0;
   --shadow:0 1px 3px rgba(0,0,0,0.08);
   --shadow-md:0 4px 16px rgba(0,0,0,0.08);
   --r:16px;
@@ -229,11 +229,8 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:40px 2
     </div>
     <div class="topbar-right">
       <!-- Кликабельный телефон в topbar -->
-      <a href="tel:+998612241117" class="topbar-phone">
-        📞 +998 (61) 224-11-17
-      </a>
       <a href="https://t.me/grandmedservice" target="_blank" style="color:var(--text-mid);font-weight:500">
-        Результаты анализов <span class="topbar-badge">24/7</span>
+        Результаты анализов <span class="topbar-badge" span>
       </a>
     </div>
   </div>
@@ -252,10 +249,6 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:40px 2
       <li><a href="#appointment">Контакты</a></li>
     </ul>
     <!-- Телефон в навигации — кликабельный -->
-    <a href="tel:+998612241117" class="nav-phone">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-      +998 (61) 224-11-17
-    </a>
     <button class="nav-cta" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button>
   </div>
 </nav>
@@ -275,7 +268,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:40px 2
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-badge">Частная клиника · г.Нукус</div>
+      <div class="hero-badge">Grand Med Service</div>
       <h1>Лучшая частная<br>клиника для вас<br>и вашей <span>семьи</span></h1>
       <p class="hero-desc">Grand Med Service — многопрофильная клиника с современным оборудованием, опытными специалистами и индивидуальным подходом к каждому пациенту.</p>
       <div class="hero-btns">
@@ -348,17 +341,17 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:40px 2
     <div class="section-head"><h2>Наши врачи</h2><p>Опытные и квалифицированные специалисты</p></div>
     <div class="doctors-grid">
       <div class="doctor-card">
-        <div class="doc-avatar" style="background:linear-gradient(135deg,#1d3557,#457b9d)">АК</div>
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#1d3557,#457b9d)">ЗБ</div>
         <div class="doc-body"><div class="doc-name">Зейнур Бухарбаев</div><div class="doc-spec">Кардиолог</div><div class="doc-exp">12 лет практики</div></div>
         <div class="doc-footer"><div class="doc-rating">★★★★★ 4.7</div><button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button></div>
       </div>
       <div class="doctor-card">
-        <div class="doc-avatar" style="background:linear-gradient(135deg,#e63946,#c1121f)">МЮ</div>
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#e63946,#c1121f)">МБ</div>
         <div class="doc-body"><div class="doc-name">Мурат Бектурсинов</div><div class="doc-spec">Невролог</div><div class="doc-exp">20 лет практики</div></div>
         <div class="doc-footer"><div class="doc-rating">★★★★★ 4.8</div><button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button></div>
       </div>
       <div class="doctor-card">
-        <div class="doc-avatar" style="background:linear-gradient(135deg,#2d6a4f,#40916c)">ША</div>
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#2d6a4f,#40916c)">ГС</div>
         <div class="doc-body"><div class="doc-name">Гулазия Салиеева</div><div class="doc-spec">Терапевт</div><div class="doc-exp">16 лет практики</div></div>
         <div class="doc-footer"><div class="doc-rating">★★★★★ 4.5</div><button class="doc-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Записаться</button></div>
       </div>
@@ -378,15 +371,6 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:40px 2
       <h2>Запишитесь на приём</h2>
       <p>Выберите удобное время — наш специалист свяжется с вами в ближайшее время.</p>
       <div class="contact-list">
-
-        <!-- ТЕЛЕФОН — кликабельный, откроет набор номера -->
-        <a href="tel:+998612241117" class="contact-item clickable" style="text-decoration:none;color:inherit">
-          <div class="contact-icon">📞</div>
-          <div>
-            <div style="font-weight:700;font-size:15px;color:var(--text)">+998 (61) 224-11-17</div>
-            <div style="font-size:12px;color:var(--text-soft)">Нажмите для звонка · <span style="background:#dcfce7;color:#16a34a;font-size:11px;font-weight:700;padding:2px 7px;border-radius:10px">24/7</span></div>
-          </div>
-        </a>
 
         <!-- TELEGRAM — кликабельный -->
         <a href="https://t.me/grandcitynukus" target="_blank" class="contact-item clickable" style="text-decoration:none;color:inherit">
@@ -428,8 +412,8 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:40px 2
         <div class="contact-item">
           <div class="contact-icon">🕐</div>
           <div>
-            <div style="font-weight:600;font-size:14px;color:var(--text)">Пн–Пц: 09:00–17:00</div>
-            <div style="font-size:12px;color:var(--text-soft)">Сб: 09:00-16:00 Воскресенье: Выходной</div>
+            <div style="font-weight:600;font-size:14px;color:var(--text)">Пн–Пц: 09:00–17:00 | Сб: 09:00-16:00</div>
+            <div style="font-size:12px;color:var(--text-soft)">Воскресенье: Выходной</div>
           </div>
         </div>
 
@@ -454,42 +438,6 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:40px 2
         </div>
       </div>
     </div>
-
-    <div class="form-wrap">
-      <div style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:20px">Онлайн-запись на приём</div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label">Имя и фамилия</label>
-          <input class="form-input" type="text" placeholder="Ваше имя">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Телефон</label>
-          <input class="form-input" type="tel" placeholder="+998 __ ___ __ __">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Специализация</label>
-        <select class="form-select">
-          <option value="">Выберите специалиста...</option>
-          <option>Кардиолог</option>
-          <option>Невролог</option>
-          <option>Терапевт</option>
-          <option>Офтальмолог</option>
-          <option>УЗИ / Диагностика</option>
-          <option>Лаборатория</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Дата приёма</label>
-        <input class="form-input" type="date">
-      </div>
-      <button class="form-submit" onclick="alert('Ваша заявка принята!\n\nМы свяжемся с вами в ближайшее время.\n\nTel: +998 (61) 224-11-17')">Записаться на приём →</button>
-      <!-- Или позвонить -->
-      <div style="text-align:center;margin-top:14px;font-size:13px;color:var(--text-soft)">
-        или <a href="tel:+998612241117" style="color:var(--red);font-weight:700">позвоните нам +998 (61) 224-11-17</a>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- MAP -->
@@ -516,23 +464,6 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:40px 2
       <div class="footer-brand">
         <div class="footer-logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAFjUlEQVR42u3YW4xdVRnA8d86+8xMpzedjr1AKaAWLBaUWjCaAq0ELyQmahR5kEuCAgEV34yJl+iLwWAMmtQYDQ9EH7AhkuAtRB5EvIBABQlQFBSstqXai4V2pjNnn+XD/o7djDNhaNDEZP2Tnb3PXt9a31rf+i5rHwqFQqFQKBQKhUKhUCgUCoVCoVAoFAqFQuGVJh1Pp0xK5HjuICfyjOekkesP3s/Qm9tjhFyaKTOX/Iy2eP2iPlrz0J5fu1+i/4pbNc9h2DxPg+fj2Jh8nJv5XyezMHND6/eGzMpMJ3Nm5sR4P545JZ5PjX4rMstCblm0dTNrM0OZ5ZkTQu7N0e/EzFmZqqXz7JCrMutjvPF4HsssjftI5qTMCdHv3GgbjT7r5zJ0ernhkzkJtyXOy7wPX8NT+D4+h2m8C9fhGizHsyG3OoZ7Lw5o+h/BfmzB9RjFP3EOvodNeB0eSlyZeSe2Yjd+qNmkX+CPuAo74vobfo9rcRAP4VO4v/X+1/hoYqqdHmhibr4MZFfi1Hjegq/idrwdN+NHYZgupnAyJnF+9BnHTXgab8HhkH2Txug1FuKyxFewCJ/Euui/KXR8Ngy2LXEZhvF1PIIVGMNp+Ev0ewe+gGewATcmLhc5Jr04B87fMKmZMI1bTuRmMftCeQ+P4hKchcewANtxduzQeHjPVBjiaPQbjsmvD6McjPtNmY04FDIvZEbwXVyB5/ATfCA3nrIb78frsQ1r8Nrw5i4m0E2NVz+M6zNXos6z2KEzzzDqDnJC7Mbjscg+XsCHYhKd2O2VsZhdOAM7Y8FviAnWcaWQewanx+/DmnzyMPa2PK/GaGo87SrcGjqfjdBJGsMtw1/xqmh/OnTAdG7mMxYG2zGzkg3otspfmiXndGJCm3Bp5uN4TQz46vCKGn/Aqoj5EXwwPGdhjNEL7/kIhsKoq2NCCyOnrIl7hcX4GfaEnlWxIYcznwlP/bMm3+zAb0LnDyLkTolctSZyzdIw+Ap8MXT8Fg/EfKZm9ZhEP1EnejOuqQihi3BOOraQR/E23BJtdezg/mibwOfxbkzUza7dhrtxX795vys1iz+E+2JRd+EJPBg55OpYwDW4NTF9lDvwsUje38TGPt8KI+6s+VN49AP4HZ4Mr9oaIfh4FIpLcEviaJrFY1J4y4a4xsKCA+/pRYLbGM8/jQndHXljK54Pi/fCW/oYqZns069Y0GGqbow/3GnaR/GPSFpVyzNzXP3wxomockMVe2oWVBypG689jMmKJRGXRyqmK/o96i51rxl/otusaV946v7QtzR0PRdte1Mz5rFQCi9YFglyaEY534dPRHW4Ed+Jwe+IWB4NBVXLJacqctUstvcUy9fy96hOQ3XTPlI1v6ejfx3G7YfeA46dVKexuGrGX1I1uWck2g+GQXoD+W4k+G6T4HPoXRRjDtZ8sDXv/zi2dONIfG9cL5WEezHIHlyemh2di5Mj3J6M8v1LbMaXcUFswNIIvQuiMo3HxB/BG+O+WRMegwr3K1wa55bJyG/nYW2EYU9zyNweyX5vnF1eFu3k23mJM0wvMvyeOOhN5mPW/zffoLqBehGbp7l6hJunOC01J9Xx97Dk54z0WN3j4g5n1Gzo8Fi/WWBV8eOaLRX39FmTWLeYiee58C7uv4hPd/m2xm26E5yfmwPhuR2211wxzJd6cZCc4sEPU21r1jDrns/MM/P9phl85L0VOxO7B+/mMGI/qsPGqArrYtefiNJ9ehzmxsLgvQjDVeFJu6IaHcKZ4U11hPU9cV45FFXmQJyJhiOsD2BJjDka9ztbH5qF/9nfDu2/FeY5dmr9HaBVddI89KeWfPtdvxX2eZZx8ix6+2WrC4VCoVAoFAqFQqFQKBQKhUKhUCgUCoVCofD/xr8AB8DiHef/NFgAAAAASUVORK5CYII=" alt="Grand Med Service"></div>
         <p>Надёжная медицинская помощь для вас и вашей семьи в г.Нукусе</p>
-        <!-- Кликабельный телефон в футере -->
-        <a href="tel:+998612241117" class="footer-phone">📞 +998 (61) 224-11-17</a>
-        <div class="footer-phone-sub">Колл-центр</div>
-        <div class="footer-socials">
-          <a href="https://t.me/grandcitynukus" target="_blank" class="f-soc" style="background:#229ed9" title="Telegram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/grand_medservice" target="_blank" class="f-soc" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)" title="Instagram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="white" stroke-width="2.5"/><circle cx="12" cy="12" r="5" fill="none" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>
-          </a>
-          <a href="https://facebook.com/grandmedservice" target="_blank" target="_blank" class="f-soc" style="background:#1877f2" title="Facebook">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </a>
-          <a href="https://wa.me/998919380404" target="_blank" class="f-soc" style="background:#25d366" title="WhatsApp">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
-        </div>
       </div>
       <div class="footer-col">
         <h4>Услуги</h4>
